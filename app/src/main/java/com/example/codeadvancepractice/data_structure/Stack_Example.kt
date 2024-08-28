@@ -17,9 +17,23 @@ fun main() {
 fun stackExample(s: String): Boolean {
 
     val validString = "[](){}"
+    val a1 = '['
+    val a2 = ']'
+    val b1 = '{'
+    val b2 = '}'
+    val c1 = '('
+    val c2 = ')'
     val stack = Stack<Char>()
     if (s.all { validString.contains(it) }) {
         s.forEach(stack::push)
+    }
+    when(stack.peek()){
+        a2 , b2 , c2 ->{
+
+
+        }
+
+
     }
 
 
