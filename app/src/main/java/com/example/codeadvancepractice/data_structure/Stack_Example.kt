@@ -10,13 +10,13 @@ import java.util.regex.Pattern
 // "()" true - "{}()" true - "(]" false
 
 fun main() {
-    stackExample("{}(5u}]")
+    val result = stackExample("{}(){")
+    println(result)
 
 }
 
 fun stackExample(s: String): Boolean {
 
-    val validString = "[](){}"
     val a1 = '['
     val a2 = ']'
     val b1 = '{'
@@ -24,19 +24,20 @@ fun stackExample(s: String): Boolean {
     val c1 = '('
     val c2 = ')'
     val stack = Stack<Char>()
-    if (s.all { validString.contains(it) }) {
-        s.forEach(stack::push)
-    }
-    when(stack.peek()){
-        a2 , b2 , c2 ->{
 
+    s.forEach { char ->
+        when (char) {
+            a1, b1, c1 -> {
+                stack.push(char)
+            }
 
+            a2, b2, c2 -> {
+                if (stack.isEmpty()) return false
+                val top = stack.pop()
+                if ((top != a1) && (char == a2) || (top != b1) && (char == b2) || (top != c1) && (char == c2)) return false
+
+            }
         }
-
-
     }
-
-
-
-    return false
+    return stack.isEmpty()
 }
