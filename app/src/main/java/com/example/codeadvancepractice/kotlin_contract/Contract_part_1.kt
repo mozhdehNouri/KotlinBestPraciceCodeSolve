@@ -1,4 +1,4 @@
-package com.example.codeadvancepractice.data_structure
+package com.example.codeadvancepractice.kotlin_contract
 
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
